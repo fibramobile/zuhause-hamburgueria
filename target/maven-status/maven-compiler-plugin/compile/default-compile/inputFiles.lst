@@ -1,0 +1,10 @@
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/model/Customers.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/controller/DashboardController.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/security/WebSecurityConfig.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/controller/CustomerController.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/repository/CustomersRepository.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/service/CustomersService.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/model/AbstractModel.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/MvcConfig.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/SistemaApplication.java
+/home/manolo/git/springboot-adminlte2/src/main/java/br/com/brunobrasilweb/springadm/service/AbstractService.java
