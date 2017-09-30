@@ -1,0 +1,126 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.thymeleaf.org/spring-data" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+    <head>
+        <!-- Atualiza a página de 30 em 30 segundos-->
+        <meta http-equiv="refresh" content="30" />
+        <title>Pedidos</title>
+    </head>
+    <body>
+        <section layout:fragment="header">
+            <h1>Lista de Pedidos</h1>
+        </section>
+        <div layout:fragment="content">
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <!--Inicio do Filtro de Pedidos -->
+                        <form action="/filter" method="get">
+                            <div class="col-sm-2">
+                                <select name="status" class="form-control">
+                                    <option th:each="item : ${status}"
+                                            th:value="${item}"
+                                            th:selected="${item == statusSelected}"
+                                            th:text="${item.status}">
+                                    </option>
+                                </select>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <input th:value="${#dates.format(date, 'yyyy-MM-dd')}" type="date" name="date" class="form-control"/>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-info">Filtrar</button>
+                            </div>
+                        </form>
+                        <!-- Fim do filtro de pedidos -->
+                    </div>
+
+                </div>
+                <div class="box box-default">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4"></div>
+                        <!-- Caso não exista registros o elemento abaixo é exibido em tela -->
+                        <div class="col-lg-12 col-md-12" th:if="${#lists.isEmpty(list)}">
+                            <h3 class="text-center text-blue">No momento ainda não existem registros.</h3>
+                        </div>
+                        <!-- Fim do elemento -->
+                        <div class="col-lg-4 col-md-4">
+                            <ul class="list-group" th:each="row : ${list}" th:if="${not #lists.isEmpty(list)}">
+                                <br/>
+                                <li th:if="${row.status.toString() == 'IN_QUEUE'}" class="list-group-item list-group-item-success">
+                                    <Strong>Data: <label th:text="${#dates.format(row.date, 'dd/MM/yyyy HH:mm')}"></label></Strong>
+                                    <br/>
+                                    <p><strong>Usúario:</strong> <span th:text="${row.user}"></span></p>
+                                    <p><strong>Telefone:</strong> <span th:text="${row.phone}"></span></p>
+                                    <p><strong>Pedido:</strong> <span th:text="${row.order}"></span></p>
+                                    <p><strong>Pagamento:</strong> <span th:text="${row.payment}"></span></p>
+                                    <p><strong>Total:</strong> <span th:text="${row.total}"></span></p>
+                                    <label>Status</label>
+                                    <select name="status" th:attr="data-order-id=${row.id}">
+                                        <option th:each="item : ${status}"
+                                                th:value="${item}"
+                                                th:selected="${item == statusSelected}"
+                                                th:text="${item.status}">
+                                        </option>
+                                    </select>
+                                </li>
+                                <li th:if="${row.status.toString() == 'SENT_TO_KITCHEN'}" class="list-group-item list-group-item-info">
+                                    <Strong>Data: <label th:text="${#dates.format(row.date, 'dd/MM/yyyy HH:mm')}"></label></Strong>
+                                    <br/>
+                                    <p><strong>Usúario:</strong> <span th:text="${row.user}"></span></p>
+                                    <p><strong>Telefone:</strong> <span th:text="${row.phone}"></span></p>
+                                    <p><strong>Pedido:</strong> <span th:text="${row.order}"></span></p>
+                                    <p><strong>Pagamento:</strong> <span th:text="${row.payment}"></span></p>
+                                    <p><strong>Total:</strong> <span th:text="${row.total}"></span></p>
+                                    <label>Status</label>
+                                    <select name="status" th:attr="data-order-id=${row.id}">
+                                        <option th:each="item : ${status}"
+                                                th:value="${item}"
+                                                th:selected="${item == statusSelected}"
+                                                th:text="${item.status}">
+                                        </option>
+                                    </select>
+                                </li>   
+                                <li th:if="${row.status.toString() == 'CANCELED'}" class="list-group-item list-group-item-danger">
+                                    <Strong>Data: <label th:text="${#dates.format(row.date, 'dd/MM/yyyy HH:mm')}"></label></Strong>
+                                    <br/>
+                                    <p><strong>Usúario:</strong> <span th:text="${row.user}"></span></p>
+                                    <p><strong>Telefone:</strong> <span th:text="${row.phone}"></span></p>
+                                    <p><strong>Pedido:</strong> <span th:text="${row.order}"></span></p>
+                                    <p><strong>Pagamento:</strong> <span th:text="${row.payment}"></span></p>
+                                    <p><strong>Total:</strong> <span th:text="${row.total}"></span></p>
+                                    <label>Status</label>
+                                    <select name="status" th:attr="data-order-id=${row.id}">
+                                        <option th:each="item : ${status}"
+                                                th:value="${item}"
+                                                th:selected="${item == statusSelected}"
+                                                th:text="${item.status}">
+                                        </option>
+                                    </select>
+                                </li>
+                                <li th:if="${row.status.toString() == 'OUT_FOR_DELIVERY'}" class="list-group-item list-group-item-warning">
+                                    <Strong>Data: <label th:text="${#dates.format(row.date, 'dd/MM/yyyy HH:mm')}"></label></Strong>
+                                    <br/>
+                                    <p><strong>Usúario:</strong> <span th:text="${row.user}"></span></p>
+                                    <p><strong>Telefone:</strong> <span th:text="${row.phone}"></span></p>
+                                    <p><strong>Pedido:</strong> <span th:text="${row.order}"></span></p>
+                                    <p><strong>Pagamento:</strong> <span th:text="${row.payment}"></span></p>
+                                    <p><strong>Total:</strong> <span th:text="${row.total}"></span></p>
+                                    <label>Status</label>
+                                    <select name="status" th:attr="data-order-id=${row.id}">
+                                        <option th:each="item : ${status}"
+                                                th:value="${item}"
+                                                th:selected="${item == statusSelected}"
+                                                th:text="${item.status}">
+                                        </option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

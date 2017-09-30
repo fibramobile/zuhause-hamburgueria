@@ -5,12 +5,10 @@ import br.com.brunobrasilweb.springadm.model.AbstractModel;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
-import java.util.List;
 
 public abstract class AbstractService<T extends AbstractModel<Long>, Long extends Serializable> {
 
@@ -19,7 +17,7 @@ public abstract class AbstractService<T extends AbstractModel<Long>, Long extend
 
     public Page<T> getList(Integer pageNumber) {
         PageRequest pageRequest =
-                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "id");
+                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.ASC, "id");
 
         return getRepository().findAll(pageRequest);
     }

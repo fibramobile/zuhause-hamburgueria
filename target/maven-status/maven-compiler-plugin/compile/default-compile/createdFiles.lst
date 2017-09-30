@@ -1,10 +1,16 @@
+br/com/brunobrasilweb/springadm/model/Order.class
 br/com/brunobrasilweb/springadm/model/Customers.class
 br/com/brunobrasilweb/springadm/controller/CustomerController.class
 br/com/brunobrasilweb/springadm/service/AbstractService.class
+br/com/brunobrasilweb/springadm/repository/OrderRepository.class
 br/com/brunobrasilweb/springadm/repository/CustomersRepository.class
 br/com/brunobrasilweb/springadm/controller/DashboardController.class
+br/com/brunobrasilweb/springadm/DatabaseConfig.class
 br/com/brunobrasilweb/springadm/SistemaApplication.class
 br/com/brunobrasilweb/springadm/model/AbstractModel.class
 br/com/brunobrasilweb/springadm/security/WebSecurityConfig.class
 br/com/brunobrasilweb/springadm/MvcConfig.class
+br/com/brunobrasilweb/springadm/model/Status.class
 br/com/brunobrasilweb/springadm/service/CustomersService.class
+br/com/brunobrasilweb/springadm/controller/OrderController.class
+br/com/brunobrasilweb/springadm/service/OrderService.class
