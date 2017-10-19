@@ -10,12 +10,21 @@
         <div layout:fragment="content">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Listagem</h3>
-                    <div class="box-tools pull-right">
-                        <br clear="all" />
+                    <div class="row">
+                        <!--Inicio do Filtro de Pedidos -->
+                        <form action="/search" method="get">
+                            <div class="col-sm-2">
+                                <input placeholder="Nº do telefone..." type="text" name="q" class="form-control"/>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-info">
+                                    <i class="fa fa-search"></i>  Pesquisar</button>
+                            </div>
+                        </form>
+                        <!-- Fim do filtro de pedidos -->
                     </div>
                 </div>
-                <div class="box-body no-padding">
+                <div class="box-body table-responsive no-padding">
                     <table class="table table-striped">
                         <tr>
                             <th>Nome</th>
@@ -42,7 +51,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="box-footer clearfix">
+                <div class="box-footer clearfix" th:if="${showPaginator}">
                     <ul class="pagination pagination-sm no-margin pull-right">
                         <li><a href="/customers/1">Primeira</a></li>
                         <li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}" th:class="${p == currentIndex} ? 'active' : ''">
